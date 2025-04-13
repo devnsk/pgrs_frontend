@@ -7,7 +7,6 @@ import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
-import AdminPanel from './pages/AdminPanel';
 import EmployeePanel from './pages/EmployeePanel';
 import ParentPanel from './pages/ParentPanel';
 import StudentPanel from './pages/StudentPanel';
@@ -16,6 +15,14 @@ import Employees from './superAdminPanel/Employees';
 import Students from './superAdminPanel/Students';
 import Layout from './superAdminPanel/Layout';
 import Dashboard from './superAdminPanel/Dashboard'
+
+import AdLayout from './adminpanel/AdLayout';
+import AdEmployee from './adminpanel/AdEmployee'
+import AdStudent from './adminpanel/AdStudent'
+import Adepartment from './adminpanel/Adepartment'
+import AdRoles from './adminpanel/AdRoles'
+import AdComplain from './adminpanel/AdComplain'
+import Adashboard from './adminpanel/Adashboard'
 
 
 // Keep the theme configuration
@@ -95,14 +102,14 @@ const App = () => {
             <Route path="employee" element={<Employees />} />
             <Route path="student" element={<Students />} />
           </Route>
-          <Route 
-            path="/admin/dashboard" 
-            element={
-              
-                <AdminPanel />
-            
-            } 
-          />
+          <Route path="/admin" element={<AdLayout />}>
+            <Route path="dashboard" element={<Adashboard />} />
+            <Route path="employees" element={<AdEmployee/>} />
+            <Route path="students" element={<AdStudent />} />
+            <Route path="Departments" element={<Adepartment />} />
+            <Route path="role" element={<AdRoles />} />
+            <Route path="complain inbox" element={<AdComplain />} />
+          </Route>
           <Route path="/student/dashboard"
           element={
             <StudentPanel />
