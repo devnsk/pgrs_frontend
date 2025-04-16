@@ -4,6 +4,7 @@ import GrievancePieChart from '../components/GrivancePieChart';
 import GrivanceBarCharts from '../components/GrivanceBarCharts';
 import DashboardCard from '../components/DashboardCard';
 
+const drawerWidth = 240; // Same width as your Sidebar
 
 const Dashboard = () => {
   const grievanceStats = [
@@ -20,12 +21,19 @@ const Dashboard = () => {
   };
 
   return (
-    <Box sx={{ px: { xs: 2, md: 4 }, py: 4 }}>
+    <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        px: { xs: 2, md: 4 },
+        py: 4,
+        ml: { md: `${drawerWidth}px` }, // offset sidebar width
+      }}
+    >
       <Typography variant="h4" fontWeight="bold" gutterBottom>
         Dashboard Overview
       </Typography>
-      
-      
+
       {/* Cards Section */}
       <Grid container spacing={2}>
         {grievanceStats.map((item, index) => (

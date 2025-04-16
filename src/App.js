@@ -1,31 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Box, CssBaseline, Toolbar } from '@mui/material';
+import { Box, CssBaseline, IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import Sidebar from './components/Sidebar'; // MUI Sidebar
-// import Navbar from './components/Navbar';   // MUI Navbar
+import Sidebar from './components/Sidebar'; // Sidebar drawer
+import Navbar from './components/Navbar';   // Your top navbar
 import Dashboard from './pages/Dashboard';
-import GrievanceInbox  from './pages/GrivanceInbox';
+import GrievanceInbox from './pages/GrivanceInbox';
 import Profile from './pages/Profile';
 
 const App = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   return (
     <Router>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
 
-        {/* Sidebar - fixed width */}
-        <Sidebar />
+        {/* Toggle Button (Hamburger icon) */}
+        <IconButton
+          onClick={() => setDrawerOpen(true)}
+          sx={{
+            position: 'fixed',
+            top: 16,
+            left: 16,
+            zIndex: 1300,
+            bgcolor: 'primary.main',
+            color: 'white',
+            '&:hover': { bgcolor: 'primary.dark' },
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
 
-        {/* Main content area */}
-        <Box component="main" sx={{ flexGrow: 1 }}>
-          {/* Navbar at the top */}
-          {/* <Navbar /> */}
-          
-          {/* Spacer to push content below AppBar height (if AppBar is fixed) */}
-          <Toolbar />
+        {/* Sidebar Drawer */}
+        <Sidebar open={drawerOpen} onClose={() => setDrawerOpen(false)} />
 
-          {/* Page content */}
+        {/* Main content */}
+        <Box component="main" sx={{ flexGrow: 1, width: '100%' }}>
+          <Navbar />
+
           <Box sx={{ p: 3 }}>
             <Routes>
               <Route path="/" element={<Dashboard />} />

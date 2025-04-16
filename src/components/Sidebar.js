@@ -1,71 +1,56 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   Drawer,
   List,
   ListItem,
-  ListItemText,
   ListItemButton,
+  ListItemText,
   Typography,
   Box,
   Divider,
-  useTheme,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
-  const theme = useTheme();
-  const isDarkMode = theme.palette.mode === 'dark';
+const drawerWidth = 240;
 
+const Sidebar = ({ open, onClose }) => {
   const sidebarItems = [
     { text: 'Dashboard', to: '/' },
     { text: 'Grievance Inbox', to: '/inbox' },
-    { text: 'Apply Leave', to: '/inbox' }, // Consider using a different route if applicable
+    { text: 'Apply Leave', to: '/apply-leave' },
     { text: 'Profile', to: '/profile' },
-    { text: 'Log-Out', to: '/logout', highlight: true },
+    { text: 'Log-Out', to: '/logout' },
   ];
 
   return (
     <Drawer
-      variant="permanent"
+      open={open}
+      onClose={onClose}
       anchor="left"
       PaperProps={{
         sx: {
-          width: 240,
-          bgcolor: isDarkMode ? 'primary.dark' : 'grey.100',
-          color: isDarkMode ? 'common.white' : 'common.black',
+          width: drawerWidth,
+          bgcolor: 'grey.100',
           pt: 2,
         },
       }}
     >
       <Box sx={{ px: 2 }}>
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
           Grievance Dashboard
         </Typography>
         <Divider />
       </Box>
 
       <List>
-        {sidebarItems.map(({ text, to, highlight }) => (
+        {sidebarItems.map(({ text, to }) => (
           <ListItem key={text} disablePadding>
             <ListItemButton
               component={Link}
               to={to}
-              sx={{
-                m: 1,
-                borderRadius: 1,
-                bgcolor: isDarkMode ? 'primary.main' : 'grey.200',
-                '&:hover': {
-                  bgcolor: highlight
-                    ? 'error.main'
-                    : isDarkMode
-                    ? 'primary.light'
-                    : 'grey.300',
-                  transform: 'scale(1.05)',
-                },
-                color: 'white',
-              }}
+              onClick={onClose} // Close drawer on item click
             >
-              <ListItemText primary={text} primaryTypographyProps={{ sx: { color: 'white' } }} />
+              <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}
