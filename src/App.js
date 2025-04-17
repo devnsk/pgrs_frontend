@@ -25,6 +25,14 @@ import AdComplain from './adminpanel/AdComplain'
 import Adashboard from './adminpanel/Adashboard'
 
 
+import StdLayout from './studentpanel/StdLayout';
+import Stdashboard from './studentpanel/Stdashboard'
+import StdGrievance from './studentpanel/StdGrievance';
+import StdComplain from './studentpanel/StdComplain'
+import StdFeedback from './studentpanel/StdFeedback';
+
+
+
 // Keep the theme configuration
 
 const theme = createTheme({
@@ -110,11 +118,18 @@ const App = () => {
             <Route path="role" element={<AdRoles />} />
             <Route path="complain inbox" element={<AdComplain />} />
           </Route>
-          <Route path="/student/dashboard"
+          <Route path="/student" element={<StdLayout />}>
+            <Route path="dashboard" element={<Stdashboard/>} />
+            <Route path="grievance" element={<StdGrievance/>} />
+            <Route path="complaint status" element={<StdComplain />} />
+            <Route path="feedback" element={<StdFeedback />} />
+          </Route>
+      
+          {/* <Route path="/student/dashboard"
           element={
             <StudentPanel />
           }
-         />
+         /> */}
          <Route path="/parent/dashboard"
          element={
           <ParentPanel />
