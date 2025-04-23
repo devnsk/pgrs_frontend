@@ -12,9 +12,6 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
-import EmployeePanel from "./pages/EmployeePanel";
-import ParentPanel from "./pages/ParentPanel";
-import StudentPanel from "./pages/StudentPanel";
 import Admins from "./superAdminPanel/Admins";
 import Employees from "./superAdminPanel/Employees";
 import Students from "./superAdminPanel/Students";
@@ -40,6 +37,12 @@ import Pcomplain from "./parentPanel/Pcomplain";
 import Pgrievance from "./parentPanel/Pgrievance";
 import Pdashboard from "./parentPanel/Pdashboard";
 import ParLayout from "./parentPanel/ParLayout";
+
+import EmpLayout from "./employeepanel/EmpLayout";
+import Empdashboard from "./employeepanel/Empdashboard";
+import EmpComplaintinbox from "./employeepanel/EmpComplaintinbox";
+import EmpComplaintStatus from "./employeepanel/EmpComplaintStatus";
+import EmpStudent from "./employeepanel/EmpStudent";
 
 // Keep the theme configuration
 
@@ -120,12 +123,14 @@ const App = () => {
             <Route path="complaint status" element={<StdComplain />} />
             <Route path="feedback" element={<StdFeedback />} />
           </Route>
+          <Route path="/employee" element={<EmpLayout />}>
+            <Route path="dashboard" element={<Empdashboard />} />
+            <Route path="complaint inbox" element={<EmpComplaintinbox />} />
+            <Route path="complaint status" element={<EmpComplaintStatus />} />
+            <Route path="student" element={<EmpStudent />} />
+          </Route>
 
-          {/* <Route path="/student/dashboard"
-          element={
-            <StudentPanel />
-          }
-         /> */}
+
           <Route
             path="/parent"
             element={
@@ -139,8 +144,6 @@ const App = () => {
             <Route path="complaint status" element={<Pcomplain />} />
             <Route path="feedback" element={<Pfeedback />} />
           </Route>
-          <Route path="/employee/dashboard" element={<EmployeePanel />} />
-          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
     </ThemeProvider>
