@@ -95,46 +95,10 @@ const Pfeedback = () => {
                 helperText="Please provide detailed feedback about your experience"
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Suggestions for Improvement"
-                multiline
-                rows={3}
-                value={feedbackForm.suggestions}
-                onChange={(e) => setFeedbackForm({ ...feedbackForm, suggestions: e.target.value })}
-                helperText="Any suggestions to improve our services"
-              />
-            </Grid>
+            
           </Grid>
-          <Typography variant="h6" gutterBottom sx={{ mt: 3, color: '#4285F4' }}>
-            Additional Information
-          </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel>Would you recommend our service?</InputLabel>
-                <Select
-                  value={feedbackForm.recommendation}
-                  onChange={(e) => setFeedbackForm({ ...feedbackForm, recommendation: e.target.value })}
-                  label="Would you recommend our service?"
-                >
-                  <MenuItem value="yes">Yes</MenuItem>
-                  <MenuItem value="no">No</MenuItem>
-                  <MenuItem value="maybe">Maybe</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Contact Number (Optional)"
-                value={feedbackForm.contactNumber}
-                onChange={(e) => setFeedbackForm({ ...feedbackForm, contactNumber: e.target.value })}
-                helperText="If you'd like us to follow up with you"
-              />
-            </Grid>
-          </Grid>
+                
+          
           <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
             <Button
               type="submit"

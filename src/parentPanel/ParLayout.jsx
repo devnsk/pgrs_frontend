@@ -26,6 +26,7 @@ import {
   Logout as LogoutIcon,
 } from '@mui/icons-material';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { logoutUser } from '../utils/auth';
 
 const drawerWidth = 240;
 
@@ -54,7 +55,8 @@ const ParLayout = () => {
 
   const handleLogout = () => {
     console.log('Logged out');
-    navigate('/login');
+    logoutUser();
+    navigate('/login', { replace: true });
   };
 
   const menuItems = [
@@ -114,7 +116,7 @@ const ParLayout = () => {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Parent Grievance System
           </Typography>
-          <IconButton
+          {/* <IconButton
             size="large"
             aria-label="show notifications"
             color="inherit"
@@ -123,7 +125,7 @@ const ParLayout = () => {
             <Badge badgeContent={4} color="error">
               <NotificationsIcon />
             </Badge>
-          </IconButton>
+          </IconButton> */}
           <IconButton
             size="large"
             edge="end"

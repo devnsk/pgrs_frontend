@@ -69,7 +69,7 @@ const Login = () => {
       }
 
       const response = await authenticateUser(trimmedEmail, password);
-
+      // console.log(response);
       if (response.success) {
         console.log("Login successful:", response.data);
 

@@ -15,20 +15,16 @@ import {
 
 const Pgrievance = () => {
   const [grievanceForm, setGrievanceForm] = useState({
-    fullName: '',
-    contactNumber: '',
-    email: '',
-    address: '',
-    relationship: '',
     studentName: '',
-    studentRollNumber: '',
     category: '',
     description: '',
     dateOfIncident: '',
     supportingDocuments: null,
-    preferredResolution: '',
     otherCategory: '',
   });
+
+  // Simulated list of student names associated with the parent (replace with API call in production)
+  const studentNames = ['John Doe', 'Jane Doe', 'Alex Smith'];
 
   const handleGrievanceSubmit = (e) => {
     e.preventDefault();
@@ -48,84 +44,27 @@ const Pgrievance = () => {
         </Typography>
         <form onSubmit={handleGrievanceSubmit}>
           <Typography variant="h6" gutterBottom sx={{ mt: 3, color: '#4285F4' }}>
-            Parent/Guardian Information
-          </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                label="Full Name"
-                value={grievanceForm.fullName}
-                onChange={(e) => setGrievanceForm({ ...grievanceForm, fullName: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                label="Contact Number"
-                value={grievanceForm.contactNumber}
-                onChange={(e) => setGrievanceForm({ ...grievanceForm, contactNumber: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                label="Email Address"
-                type="email"
-                value={grievanceForm.email}
-                onChange={(e) => setGrievanceForm({ ...grievanceForm, email: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControl fullWidth required>
-                <InputLabel>Relationship to Student</InputLabel>
-                <Select
-                  value={grievanceForm.relationship}
-                  onChange={(e) => setGrievanceForm({ ...grievanceForm, relationship: e.target.value })}
-                  label="Relationship to Student"
-                >
-                  <MenuItem value="mother">Mother</MenuItem>
-                  <MenuItem value="father">Father</MenuItem>
-                  <MenuItem value="guardian">Guardian</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                label="Address"
-                multiline
-                rows={2}
-                value={grievanceForm.address}
-                onChange={(e) => setGrievanceForm({ ...grievanceForm, address: e.target.value })}
-              />
-            </Grid>
-          </Grid>
-          <Typography variant="h6" gutterBottom sx={{ mt: 3, color: '#4285F4' }}>
             Student Information
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                label="Student Name"
-                value={grievanceForm.studentName}
-                onChange={(e) => setGrievanceForm({ ...grievanceForm, studentName: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                label="Student's Roll Number"
-                value={grievanceForm.studentRollNumber}
-                onChange={(e) => setGrievanceForm({ ...grievanceForm, studentRollNumber: e.target.value })}
-              />
+              <FormControl fullWidth required>
+                <InputLabel>Student Name</InputLabel>
+                <Select
+                  value={grievanceForm.studentName}
+                  onChange={(e) => setGrievanceForm({ ...grievanceForm, studentName: e.target.value })}
+                  label="Student Name"
+                >
+                  <MenuItem value="">
+                    <em>Select a student</em>
+                  </MenuItem>
+                  {studentNames.map((name, index) => (
+                    <MenuItem key={index} value={name}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
           <Typography variant="h6" gutterBottom sx={{ mt: 3, color: '#4285F4' }}>
@@ -192,18 +131,6 @@ const Pgrievance = () => {
                 InputLabelProps={{ shrink: true }}
                 onChange={handleFileChange}
                 helperText="Upload any relevant documents (PDF, JPG, PNG)"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                label="Preferred Resolution"
-                multiline
-                rows={2}
-                value={grievanceForm.preferredResolution}
-                onChange={(e) => setGrievanceForm({ ...grievanceForm, preferredResolution: e.target.value })}
-                helperText="Please describe how you would like this issue to be resolved"
               />
             </Grid>
           </Grid>
