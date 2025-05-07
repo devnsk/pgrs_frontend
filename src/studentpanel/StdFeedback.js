@@ -74,71 +74,7 @@ const StdFeedback = () => {
             <form onSubmit={handleFeedbackSubmit}>
               <Grid container spacing={3}>
                 {/* Student Details */}
-                <Grid item xs={12}>
-                  <Typography variant="h6" gutterBottom>
-                    Student Details
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Name"
-                    value={feedbackForm.studentDetails.name}
-                    onChange={(e) => setFeedbackForm({
-                      ...feedbackForm,
-                      studentDetails: {
-                        ...feedbackForm.studentDetails,
-                        name: e.target.value
-                      }
-                    })}
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Roll Number"
-                    value={feedbackForm.studentDetails.rollNumber}
-                    onChange={(e) => setFeedbackForm({
-                      ...feedbackForm,
-                      studentDetails: {
-                        ...feedbackForm.studentDetails,
-                        rollNumber: e.target.value
-                      }
-                    })}
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Department"
-                    value={feedbackForm.studentDetails.department}
-                    onChange={(e) => setFeedbackForm({
-                      ...feedbackForm,
-                      studentDetails: {
-                        ...feedbackForm.studentDetails,
-                        department: e.target.value
-                      }
-                    })}
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Year"
-                    value={feedbackForm.studentDetails.year}
-                    onChange={(e) => setFeedbackForm({
-                      ...feedbackForm,
-                      studentDetails: {
-                        ...feedbackForm.studentDetails,
-                        year: e.target.value
-                      }
-                    })}
-                    required
-                  />
-                </Grid>
+                
     
                 {/* Feedback Details */}
                 <Grid item xs={12}>
@@ -212,17 +148,7 @@ const StdFeedback = () => {
                     </Box>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={feedbackForm.anonymous}
-                        onChange={(e) => setFeedbackForm({ ...feedbackForm, anonymous: e.target.checked })}
-                      />
-                    }
-                    label="Submit anonymously"
-                  />
-                </Grid>
+                
                 <Grid item xs={12}>
                   <Button
                     type="submit"

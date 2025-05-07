@@ -15,6 +15,7 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  Button,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -24,6 +25,7 @@ import {
   Feedback as FeedbackIcon,
   Notifications as NotificationsIcon,
   Logout as LogoutIcon,
+  Description as ReportIcon,
 } from '@mui/icons-material';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../utils/auth';
@@ -57,6 +59,10 @@ const ParLayout = () => {
     console.log('Logged out');
     logoutUser();
     navigate('/login', { replace: true });
+  };
+
+  const handleGenerateReport = () => {
+    navigate('/parent/report');
   };
 
   const menuItems = [
@@ -116,6 +122,14 @@ const ParLayout = () => {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Parent Grievance System
           </Typography>
+          <Button
+            color="inherit"
+            startIcon={<ReportIcon />}
+            onClick={handleGenerateReport}
+            sx={{ mr: 2 }}
+          >
+            Generate Report
+          </Button>
           {/* <IconButton
             size="large"
             aria-label="show notifications"

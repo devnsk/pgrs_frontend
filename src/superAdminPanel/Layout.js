@@ -16,6 +16,7 @@ import {
   MenuItem,
   CircularProgress,
   AppBar,
+  Button,
 } from "@mui/material";
 import {
   Notifications as NotificationsIcon,
@@ -25,6 +26,7 @@ import {
   Work as WorkIcon,
   School as SchoolIcon,
   Menu as MenuIcon,
+  Description as ReportIcon,
 } from "@mui/icons-material";
 import { useNavigate, Outlet } from "react-router-dom";
 import { drawerWidth } from "./DrawerContent"; // or use your own constant
@@ -83,13 +85,16 @@ const Layout = () => {
     navigate("/login");
   };
 
+  const handleGenerateReport = () => {
+    navigate("/superadmin/report");
+  };
+
   const menuItems = [
     { text: "Dashboard", icon: <DashboardIcon />, path: "/superadmin/dashboard" },
     { text: "Admins", icon: <PeopleIcon />, path: "/superadmin/admin" },
     { text: "Employees", icon: <WorkIcon />, path: "/superadmin/employee" },
     { text: "Students", icon: <SchoolIcon />, path: "/superadmin/student" },
   ];
-  
 
   const drawer = (
     <div>
@@ -100,13 +105,12 @@ const Layout = () => {
       </Toolbar>
       <Divider />
       <List>
-      {menuItems.map((item) => (
-      <ListItem button key={item.text} onClick={() => navigate(item.path)}>
-      <ListItemIcon>{item.icon}</ListItemIcon>
-      <ListItemText primary={item.text} />
-      </ListItem>
-      ))}
-
+        {menuItems.map((item) => (
+          <ListItem button key={item.text} onClick={() => navigate(item.path)}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
         <ListItem button onClick={handleLogout}>
           <ListItemIcon>
             <LogoutIcon />
@@ -140,6 +144,14 @@ const Layout = () => {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Super Admin Portal
           </Typography>
+          <Button
+            color="inherit"
+            startIcon={<ReportIcon />}
+            onClick={handleGenerateReport}
+            sx={{ mr: 2 }}
+          >
+            Generate Report
+          </Button>
           <IconButton
             size="large"
             aria-label="show notifications"
